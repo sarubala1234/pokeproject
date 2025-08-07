@@ -25,7 +25,7 @@ SECRET_KEY = os.environ.get('django-insecure-^zvdj$0!q$egshd55q48qu+q-jz&axf(6a2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'pokeproject.onrender.com']
+ALLOWED_HOSTS = ['.onrender.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
