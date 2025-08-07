@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pokédex</title>
+</head>
+<body>
+  <h2>Welcome to the Pokédex</h2>
+  <form method="post">{% csrf_token %}
+    <input type="text" name="name" placeholder="Enter Pokémon name" required>
+    <button type="submit">Search</button>
+  </form>
+
+  {% if pokemon %}
+    <h3>{{ pokemon.name }}</h3>
+    <img src="{{ pokemon.image }}" alt="Image of {{ pokemon.name }}">
+    <p><strong>Types:</strong> {{ pokemon.types|join:", " }}</p>
+    <p><strong>Abilities:</strong> {{ pokemon.abilities|join:", " }}</p>
+  {% elif error %}
+    <p>{{ error }}</p>
+  {% endif %}
+
+  <p><a href="{% url 'logout' %}">Logout</a></p>
+</body>
+</html>
