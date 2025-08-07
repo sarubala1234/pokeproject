@@ -26,7 +26,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 SECRET_KEY = os.environ.get('django-insecure-^zvdj$0!q$egshd55q48qu+q-jz&axf(6a2zcz)v0r5pyhol#z')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 
 ALLOWED_HOSTS = ['pokeproject-ag3b.onrender.com', 'localhost', '127.0.0.1']
