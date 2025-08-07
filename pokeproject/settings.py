@@ -14,7 +14,7 @@ from pathlib import Path
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
@@ -31,7 +31,7 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'pokeproject.onrender.com']
 # Application definition
 
 INSTALLED_APPS = [
-       'pokeapp',
+    'pokeapp',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
