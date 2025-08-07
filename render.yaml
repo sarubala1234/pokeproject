@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: pokeproject
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn pokeproject.wsgi:application
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: pokeproject.settings
+      - key: SECRET_KEY
+        value: os.environ.get('django-insecure-^zvdj$0!q$egshd55q48qu+q-jz&axf(6a2zcz)v0r5pyhol#z')
