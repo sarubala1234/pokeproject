@@ -23,7 +23,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 SECRET_KEY = os.environ.get('django-insecure-^zvdj$0!q$egshd55q48qu+q-jz&axf(6a2zcz)v0r5pyhol#z')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'pokeproject.onrender.com']
 
@@ -48,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+     "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = 'pokeproject.urls'
@@ -117,6 +118,9 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
@@ -124,4 +128,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 LOGIN_URL = 'login'
-# LOGOUT_REDIRECT_URL = 'login'
