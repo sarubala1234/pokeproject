@@ -7,5 +7,5 @@ services:
     envVars:
       - key: DJANGO_SETTINGS_MODULE
         value: pokeproject.settings
-      - key: SECRET_KEY
-        value: os.environ.get('django-insecure-^zvdj$0!q$egshd55q48qu+q-jz&axf(6a2zcz)v0r5pyhol#z')
+      - key: PYTHON_VERSION
+        value: 3.10

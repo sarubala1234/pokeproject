@@ -6,6 +6,7 @@ from django.contrib import messages
 from .forms import RegisterForm
 import requests
 
+
 def home(request):
     if request.user.is_authenticated:
         return redirect('pokedex')
