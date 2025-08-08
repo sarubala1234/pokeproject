@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.models import User
+from pokeapp.models import CustomUser as User
+
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -29,23 +30,28 @@ def register_view(request):
     return render(request, 'pokeapp/register.html', {'form': form})
 
 
+
+
 def login_view(request):
     if request.method == 'POST':
-        email = request.POST['email']
-        password = request.POST['password']
-        try:
-            user = User.objects.get(email=email)
-            username = user.username
-        except User.DoesNotExist:
-            messages.error(request, 'Invalid email.')
+        email = request.POST.get('email', '').strip().lower()
+        password = request.POST.get('password', '')
+
+        # safe lookup (won't throw MultipleObjectsReturned)
+        user_obj = User.objects.filter(email=email).first()
+        if user_obj is None:
+            messages.error(request, "Invalid email or password")
             return redirect('login')
 
-        user = authenticate(request, username=username, password=password)
-        if user:
+        # authenticate with username (default User model)
+        user = authenticate(request, username=user_obj.username, password=password)
+        if user is not None:
             login(request, user)
-            return redirect('home')
+            return redirect('home')    # or 'pokedex' depending on your urls
         else:
-            messages.error(request, 'Invalid password.')
+            messages.error(request, "Invalid email or password")
+            return redirect('login')
+
     return render(request, 'pokeapp/login.html')
 
 
