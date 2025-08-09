@@ -1,13 +1,40 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
-<head><title>Register</title></head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - Pokédex</title>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
 <body>
-  <h2>Register</h2>
-  {% for message in messages %}<p>{{ message }}</p>{% endfor %}
-  <form method="post">{% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Register</button>
-  </form>
-  <p>Already registered? <a href="{% url 'login' %}">Login</a></p>
+  <nav class="navbar">
+    <h1>🎮 Join the Pokédex</h1>
+  </nav>
+
+  <div class="container">
+    <div class="box" style="max-width: 500px; margin: 2rem auto;">
+      <h2>Become a Pokémon Trainer!</h2>
+      <p style="text-align: center; color: #666; margin-bottom: 1.5rem;">
+        Create your account to start exploring the Pokémon world
+      </p>
+      
+      {% for message in messages %}
+        <div class="success">{{ message }}</div>
+      {% endfor %}
+      
+      <form method="post">
+        {% csrf_token %}
+        <div style="text-align: left;">
+          {{ form.as_p }}
+        </div>
+        <button type="submit">Create Account</button>
+      </form>
+      
+      <div style="text-align: center; margin-top: 1.5rem;">
+        <p>Already a trainer? <a href="{% url 'login' %}">Login here</a></p>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

@@ -5,6 +5,96 @@ body {
     height: 100vh;
     justify-content: center;
     align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    text-align: center;
+}
+
+h1, h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+input, button {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+input:focus {
+    outline: none;
+    border-color: #329ef0;
+}
+
+button {
+    background-color: #329ef0;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #1e7bc8;
+}
+
+.error {
+    color: #ff0000;
+    margin: 10px 0;
+}
+
+.card {
+    border: 1px solid #cccccc;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+    background-color: #f9f9f9;
+}
+
+a {
+    color: #329ef0;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+form p {
+    margin: 0;
+    padding: 0;
+}
+
+form p label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+form p input {
+    margin-bottom: 15px;
+}
+
+form p ul {
+    list-style: none;
+    padding: 0;
+    margin: 5px 0;
+    color: #ff0000;
+    text-align: left;
+    font-size: 14px;
 }
 
 .box {
@@ -13,21 +103,4 @@ body {
     border-radius: 10px;
     width: 300px;
     text-align: center;
-}
-
-input, button {
-    width: 90%;
-    padding: 10px;
-    margin: 10px 0;
-}
-
-.error {
-    color: rgba(255, 0, 132, 0.171);
-}
-
-.card {
-    border: 1px solid #cccccc;
-    padding: 10px;
-    border-radius: 10px;
-    margin-top: 10px;
 }

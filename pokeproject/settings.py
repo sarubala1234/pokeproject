@@ -30,7 +30,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+DEBUG = True
 
 
 
@@ -133,7 +133,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
+STATICFILES_DIRS = [
+    BASE_DIR / "pokeapp/static",  # Adjust BASE_DIR if necessary
+]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
@@ -143,3 +145,22 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 LOGIN_URL = 'login'
+
+AUTHENTICATION_BACKENDS = [
+    'pokeapp.backends.EmailBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'DEBUG',
+    },
+}

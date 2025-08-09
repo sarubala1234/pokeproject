@@ -1,24 +1,53 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Pokédex</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokédex - Home</title>
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
 </head>
 <body>
-  <h2>Welcome to the Pokédex</h2>
-  <form method="post">{% csrf_token %}
-    <input type="text" name="name" placeholder="Enter Pokémon name" required>
-    <button type="submit">Search</button>
-  </form>
+  <nav class="navbar">
+    <h1>🏠 Pokédex Home</h1>
+  </nav>
 
-  {% if pokemon %}
-    <h3>{{ pokemon.name }}</h3>
-    <img src="{{ pokemon.image }}" alt="Image of {{ pokemon.name }}">
-    <p><strong>Types:</strong> {{ pokemon.types|join:", " }}</p>
-    <p><strong>Abilities:</strong> {{ pokemon.abilities|join:", " }}</p>
-  {% elif error %}
-    <p>{{ error }}</p>
-  {% endif %}
+  <div class="container">
+    <div class="box">
+      <h2>Welcome to the Ultimate Pokédex!</h2>
+      <p style="text-align: center; margin-bottom: 2rem; color: #666;">
+        Search for any Pokémon and discover their types, abilities, and more!
+      </p>
 
-  <p><a href="{% url 'logout' %}">Logout</a></p>
+      <form method="post">
+        {% csrf_token %}
+        <div class="search-container">
+          <input type="text" name="name" placeholder="Enter Pokémon name (e.g., Charizard)" required>
+          <button type="submit">Search</button>
+        </div>
+      </form>
+
+      {% if pokemon %}
+        <div class="pokemon-card">
+          <h2>{{ pokemon.name|title }}</h2>
+          <img src="{{ pokemon.image }}" alt="Image of {{ pokemon.name }}" class="pokemon-image">
+          <div style="text-align: left;">
+            <p><strong>🎯 Types:</strong> {{ pokemon.types|join:", " }}</p>
+            <p><strong>⚡ Abilities:</strong> {{ pokemon.abilities|join:", " }}</p>
+          </div>
+        </div>
+      {% elif error %}
+        <div class="error">
+          <strong>Oops!</strong> {{ error }}
+        </div>
+      {% endif %}
+
+      <div style="text-align: center; margin-top: 2rem;">
+        <a href="{% url 'pokedex' %}" class="nav-button">Advanced Search</a>
+        <a href="{% url 'logout' %}" class="nav-button">Logout</a>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
