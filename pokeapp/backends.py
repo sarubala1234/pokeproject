@@ -11,10 +11,11 @@ class EmailBackend(ModelBackend):
         if username is None:
             username = kwargs.get('email')
         try:
-            user = UserModel.objects.get(email__iexact=username)
+            # Use filter and first() to avoid MultipleObjectsReturned
+            user = UserModel.objects.filter(email__iexact=username).first()
         except UserModel.DoesNotExist:
             return None
         else:
-            if user.check_password(password) and self.user_can_authenticate(user):
+            if user and user.check_password(password) and self.user_can_authenticate(user):
                 return user
         return None
